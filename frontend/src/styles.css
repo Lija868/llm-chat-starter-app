@@ -1,0 +1,146 @@
+:root{--color-primary:#1F6FEB;--color-secondary:#A6E22E;--bg:#F7F9FB;--fg:#0F1720;--user:#D7EFFF;--assistant:#EAF6E1}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Arial;background:var(--bg);color:var(--fg)}
+.app{display:flex;height:100vh}
+.sidebar{width:260px;background:white;padding:16px;box-shadow:2px 0 6px rgba(0,0,0,0.04)}
+.sidebar h3{margin:0 0 12px}
+.sidebar button{width:100%;padding:8px;border-radius:8px;border:none;background:var(--color-primary);color:white;margin-bottom:12px}
+.chat-list{display:flex;flex-direction:column;gap:8px}
+.chat-item{padding:8px;border-radius:6px;cursor:pointer}
+.chat-item.active{background:linear-gradient(90deg,var(--color-primary),var(--color-secondary));color:white}
+.main{flex:1;padding:20px;display:flex;flex-direction:column}
+.messages{flex:1;overflow:auto;margin-top:8px}
+.message{padding:8px;margin-bottom:8px;border-radius:12px;max-width:70%;word-wrap:break-word}
+.message.user{background:var(--user);margin-left:auto}
+.message.assistant{background:var(--assistant);margin-right:auto}
+.composer{display:flex;gap:8px;margin-top:12px}
+.composer input{flex:1;padding:8px;border-radius:8px;border:1px solid #ddd}
+.composer button{padding:8px 12px;border-radius:8px;border:none;background:var(--color-primary);color:white}
+.auth-root{display:flex;align-items:center;justify-content:center;height:100vh}
+.auth-card{background:white;padding:24px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.06);display:flex;flex-direction:column;gap:12px;width:420px}
+.auth-card input{padding:10px;border-radius:8px;border:1px solid #e6e6e6}
+.auth-actions{display:flex;gap:8px}
+.btn{padding:10px;border-radius:8px;border:none;cursor:pointer}
+.btn-primary{background:var(--color-primary);color:white}
+.btn-accent{background:var(--color-secondary);color:white}
+/* Sidebar should stretch & allow footer */
+
+.sidebar {
+  width: 260px;
+  background: white;
+  padding: 16px;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.04);
+  position: relative; /* make absolute children like .user-info work */
+    height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sidebar footer */
+.user-info {
+  position: fixed; /* Fix it to viewport */
+  bottom: 20px;    /* 20px from bottom */
+  left: 20px;      /* 20px from left */
+  width: 220px;    /* Or whatever width fits your sidebar */
+  background: #f5f7fa;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--fg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000; /* stay on top */
+}
+
+.user-email {
+  font-weight: 500;
+  color: var(--color-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.btn-logout {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  background: #ef4444;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.2s ease;
+}
+.btn-logout:hover {
+  background: #dc2626; /* darker red */
+}
+
+.btn-logout:active {
+  background: #b91c1c; /* even darker red when pressed */
+}
+
+
+
+/* Typing loader animation */
+.typing-loader {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--assistant);
+  border-radius: 12px;
+  width: fit-content;
+}
+
+.typing-loader span {
+  width: 6px;
+  height: 6px;
+  background: #555;
+  border-radius: 50%;
+  display: inline-block;
+  animation: bounce 1.2s infinite;
+}
+
+.typing-loader span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-loader span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+
+.message p {
+  margin: 0 0 6px;
+}
+
+.message code {
+  background: #f4f4f4;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.message pre {
+  background: #f4f4f4;
+  padding: 8px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: monospace;
+}
+
+.message ul {
+  margin: 6px 0;
+  padding-left: 20px;
+}
